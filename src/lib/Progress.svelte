@@ -23,10 +23,25 @@
   let activeDay = $derived<Day>(getDay(date));
   const onChangeDate = (event: Event) => {
     const target = event.target as HTMLInputElement;
+    const selectedDate = new Date(target.value);
     date = new Date(target.value);
-    if (progress.items[getDayKey(date)] == null) {
-      progress.items[getDayKey(date)] = emptyDay;
+
+    const items = {...progress.items};
+
+    const now = new Date();
+
+    while (getDayKey(selectedDate) != getDayKey(now)) {
+      selectedDate.setDate(selectedDate.getDate() + 1);
+      if (items[getDayKey(date)] == null) {
+        items[getDayKey(date)] = emptyDay;
+      }
     }
+
+    if (items[getDayKey(date)] == null) {
+      items[getDayKey(date)] = emptyDay;
+    }
+
+    progress.items = items;
   };
 
 </script>
