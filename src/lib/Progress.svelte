@@ -106,5 +106,6 @@
     display: block;
     width: 100%;
     margin: 0 auto;
+    -webkit-min-logical-width: calc(100% - 16px);
   }
 </style>
