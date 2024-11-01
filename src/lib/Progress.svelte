@@ -31,10 +31,10 @@
     const now = new Date();
 
     while (getDayKey(selectedDate) != getDayKey(now)) {
-      selectedDate.setDate(selectedDate.getDate() + 1);
-      if (items[getDayKey(date)] == null) {
-        items[getDayKey(date)] = emptyDay;
+      if (items[getDayKey(selectedDate)] == null) {
+        items[getDayKey(selectedDate)] = emptyDay;
       }
+      selectedDate.setDate(selectedDate.getDate() + 1);
     }
 
     if (items[getDayKey(date)] == null) {

@@ -5,10 +5,8 @@
   import Streak from "./lib/Streak.svelte";
   const localStorageService = new LocalStorageService();
 
-  $effect(() => {
-    const items = localStorageService.getProgress().items;
-    progress.items = items;
-  });
+  const items = localStorageService.getProgress().items;
+  progress.items = items;
 </script>
 
 <main>
