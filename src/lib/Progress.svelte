@@ -16,6 +16,8 @@
   });
 
   const today = new Date();
+  const offset = today.getTimezoneOffset() / 60;
+  today.setHours(today.getHours() - offset);
   let date = $state(today);
   if (progress.items[getDayKey(today)] == null) {
     progress.items[getDayKey(today)] = emptyDay;
@@ -29,6 +31,8 @@
     const items = {...progress.items};
 
     const now = new Date();
+    const offset = now.getTimezoneOffset() / 60;
+    now.setHours(now.getHours() - offset);
 
     while (getDayKey(selectedDate) != getDayKey(now)) {
       if (items[getDayKey(selectedDate)] == null) {
